@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css';
 const SECONDS = 300
-let nbr=25
+let nbr=200
 
 
 let array_list = [
@@ -27,14 +27,10 @@ const App = () => {
   const [currChar, setCurrChar] = useState("")
   const [ten,setTen]=useState(0)
   const textInput = useRef(null)
-  // const [nbr,setNbr]=(0)
 
 
   useEffect(() => {
-    // const randomIndex = word[Math.floor(Math.random() * word.length)];
-    // setword(randomIndex)
     setword(getRandomVlues(array_list, nbr))
-    // console.log(word,'k')
   }, [])
 
   function getRandomVlues(array_list, nbr) {
@@ -74,7 +70,6 @@ const App = () => {
 
   }
   const handleKeyDown = ({ keyCode, key }) => {
-    // console.log(keyCode)
     setKey(keyCode)
     if (keyCode === 32) {
       compareWord()
@@ -143,12 +138,11 @@ const App = () => {
       </div>
       {status === 'started' &&
         <div className='practise-text'>
-          {/* {status && <h1 >{word}</h1>} */}
           {word.map((wor, i) => (
             <span key={i}>
               <span>
                 {wor.split(" ").map((char, idx) => (
-                  <span className={getCharClass(i, idx, char)} key={idx}>{char.repeat(ten)} &nbsp;</span>
+                  <span className={getCharClass(i, idx, char)} key={idx}>{char} &nbsp;</span>
                 ))}
               </span>
               <span>  </span>
